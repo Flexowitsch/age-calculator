@@ -1,0 +1,228 @@
+:root {
+    --black: rgba(21, 21, 21, 1);
+    --purple: rgba(133, 77, 255, 1);
+    --white: #FFF;
+    --light-grey: #F0F0F0;
+    --grey: #716F6F;
+    --line: #DCDCDC;
+    --red: #FF5959;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--light-grey);
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+@media(max-width: 390px) {
+    body {
+        padding: 1rem;
+    }
+}
+
+
+/* typo */
+
+.heading-s {
+    /* Heading S */
+    color: var(--grey);
+    font-family: Poppins;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.21875rem;
+    text-transform: uppercase;
+}
+
+.heading-m {
+    /* Heading M */
+    font-family: Poppins;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.02rem;
+}
+
+.heading-l {
+    /* Heading L */
+    font-family: Poppins;
+    font-size: 6.5rem;
+    font-style: italic;
+    font-weight: 800;
+    line-height: 110%;
+    /* 7.15rem */
+    letter-spacing: -0.13rem;
+    margin: 0;
+}
+
+@media(max-width: 390px) {
+    .heading-l {
+        font-size: 3.5rem;
+    }
+}
+
+.body {
+    /* Body */
+    font-family: Poppins;
+    font-size: 0.875rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+.flex {
+    display: flex;
+}
+
+/* general styles */
+
+.container {
+    background-color: var(--white);
+    padding: 3.5rem;
+    border-radius: 1.5rem 1.5rem 12.5rem 1.5rem;
+    background: var(--White, #FFF);
+    width: 52.5rem;
+    height: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media(max-width: 390px) {
+    .container {
+        width: 345px;
+        border-radius: 1.5rem 1.5rem 6.25rem 1.5rem;
+        background: var(--white);
+        padding: 3rem 1rem;
+    }
+}
+
+/* styling of the inputs */
+
+.inputs-container {
+    gap: 2rem;
+}
+
+@media(max-width: 390px) {
+    .inputs-container {
+        gap: 0.5rem;
+    }
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+@media(max-width: 390px) {
+    label {
+        font-size: 0.75rem;
+        margin-bottom: 0.25rem;
+    }
+}
+
+input {
+    width: 10rem;
+    color: var(--Grey, #716F6F);
+    color: var(--Black, #151515);
+    /* Heading M */
+    font-family: Poppins;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.02rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--Line, #DCDCDC);
+    caret-color: var(--purple);
+}
+
+@media(max-width: 390px) {
+    input {
+        width: 4.2rem;
+        font-size: 1.25rem;
+        padding: 0.75rem 1rem;
+    }
+}
+
+input:active,
+input:focus {
+    outline: none !important;
+    border: 2px solid var(--purple)
+}
+
+.errorMessage {
+    color: var(--red);
+    font-family: Poppins;
+    font-size: 0.875rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+@media(max-width: 390px) {
+    .errorMessage {
+        font-size: 0.65rem;
+        margin-top: 0.25rem;
+    }
+}
+
+/* utility class that is added after wrongful input */
+.errorLabel {
+    color: var(--red);
+}
+
+.errorInput {
+    outline: none !important;
+    border: 2px solid var(--red)
+}
+
+
+/* seperator styles */
+
+.seperator {
+    position: relative;
+    margin: 4.97rem 0;
+}
+
+.seperator img {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--purple);
+    padding: 1.63rem;
+    position: absolute;
+    border-radius: 50%;
+    right: 0;
+    top: -1900%;
+}
+
+@media(max-width: 390px) {
+    .seperator img {
+        padding: 1.25rem;
+        right: 32%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    } 
+}
+
+.seperator img:hover {
+    background-color: var(--black);
+}
+
+/* output styles */
+
+
+.output-container .valueOutput {
+    color: var(--purple);
+}
