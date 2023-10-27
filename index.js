@@ -14,9 +14,9 @@ const monthLabel = document.getElementById("monthLabel")
 const yearLabel = document.getElementById("yearLabel")
 
 //output
-const yearOutput = document.getElementById("yearInput")
-const monthOutput = document.getElementById("monthInput")
-const daysOutput = document.getElementById("daysInput")
+const yearsOutput = document.getElementById("yearsOutput")
+const monthsOutput = document.getElementById("monthsOutput")
+const daysOutput = document.getElementById("daysOutput")
 
 
 //initialize the variables for user input
@@ -43,28 +43,28 @@ let formattedCurrentDate = currentDay + ' ' + currentMonth + ' ' + currentYear;
 //checking of the valid inputs and error handling in the interface
 
 function isValidYear() {
-    if (userInputYear >= currentYear ) {
+    if (userInputYear >= currentYear) {
         console.log("error")
-        yearError.style.display="block";
+        yearError.style.display = "block";
         yearLabel.classList.add("errorLabel")
         yearInput.classList.add("errorInput")
         validDate = true
     } else {
-        console.log("all gooodf")
-        yearError.style.display="none";
+        console.log("all goood")
+        yearError.style.display = "none";
         yearLabel.classList.remove("errorLabel")
         yearInput.classList.remove("errorInput")
     }
 }
 
 function isValidMonth() {
-    
+
     if (userInputMonth >= 1 && userInputMonth <= 12) {
         monthError.style.display = "none"
         monthLabel.classList.remove("errorLabel")
         monthInput.classList.remove("errorInput")
         validDate = true
-    }  else {
+    } else {
         monthError.style.display = "block"
         monthLabel.classList.add("errorLabel")
         monthInput.classList.add("errorInput")
@@ -90,49 +90,49 @@ function isValidDay() {
 
 // check if date is possible
 function isDatePossible() {
-     
-     if (userInputMonth === "4" && userInputDay > 30) {
+
+    if (userInputMonth === "4" && userInputDay > 30) {
         dayError.style.display = "block"
         dayLabel.classList.add("errorLabel")
         dayError.textContent = "April has only 30 days"
         dayInput.classList.add("errorInput")
         validDate = false
-    } 
-    else if  (userInputMonth === "2" && userInputDay > 28) {
+    }
+    else if (userInputMonth === "2" && userInputDay > 28) {
         dayError.style.display = "block"
         dayLabel.classList.add("errorLabel")
         dayError.textContent = "February has only 28 days"
         dayInput.classList.add("errorInput")
         validDate = false
-    } 
-    else if  (userInputMonth === "6" && userInputDay > 30) {
+    }
+    else if (userInputMonth === "6" && userInputDay > 30) {
         dayError.style.display = "block"
         dayLabel.classList.add("errorLabel")
         dayError.textContent = "June has only 30 days"
         dayInput.classList.add("errorInput")
         validDate = false
-    } 
-    else if  (userInputMonth === "9" && userInputDay > 30) {
+    }
+    else if (userInputMonth === "9" && userInputDay > 30) {
         dayError.style.display = "block"
         dayLabel.classList.add("errorLabel")
         dayError.textContent = "September has only 30 days"
         dayInput.classList.add("errorInput")
         validDate = false
     }
-    else if  (userInputMonth === "9" && userInputDay > 30) {
+    else if (userInputMonth === "9" && userInputDay > 30) {
         dayError.style.display = "block"
         dayLabel.classList.add("errorLabel")
         dayError.textContent = "September has only 30 days"
         dayInput.classList.add("errorInput")
         validDate = false
-    } 
-    else if  (userInputMonth === "11" && userInputDay > 30) {
+    }
+    else if (userInputMonth === "11" && userInputDay > 30) {
         dayError.style.display = "block"
         dayLabel.classList.add("errorLabel")
         dayError.textContent = "November has only 30 days"
         dayInput.classList.add("errorInput")
         validDate = false
-    } 
+    }
     else {
         validDate = true;
     }
@@ -141,26 +141,35 @@ function isDatePossible() {
 
 
 
+
+
 //trigger for calculation and the checking of the values
 
 convertButton.addEventListener("click", function () {
-    console.log(typeof userInputYear)
+
+        yearsOutput.textContent = "--"
+        monthsOutput.textContent = "--"
+        daysOutput.textContent = "--"
+
+        userInputYear = yearInput.value;
+        userInputMonth = monthInput.value;
+        userInputDay = dayInput.value;
     
-    userInputYear = yearInput.value;
-    userInputMonth = monthInput.value;
-    userInputDay = dayInput.value;
+        let userDate = new Date (userInputYear, userInputMonth - 1, userInputDay);
+        let currentDate = new Date(currentYear, currentMonth - 1, currentDay);
+        console.log(userDate)
+        console.log(currentDate)
 
-    isValidDay()
-    isValidMonth()
-    isValidYear() // Call the validateInput function before checking for impossible dates
-    isDatePossible(); // Check if the dates are possible
+        let timeDiff = Math.abs(currentDate.getTime() - userDate.getTime());
+        let daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
+        let yearDiff = Math.floor(daysDiff / 365);
+        let remainingDays = daysDiff % 365;
+        let monthDiff = Math.floor(remainingDays / 30);
+        let dayDiff = remainingDays % 30;
 
-    //calculations of the year 
-    
-   
-    getYear()
-    
-
-
+       
+        yearsOutput.textContent = yearDiff
+        monthsOutput.textContent = monthDiff
+        daysOutput.textContent = dayDiff
 });
 
